@@ -1,45 +1,4 @@
 
-// Post message function
-function sendMessage() {
-    const textareaField = document.getElementById("textarea-field");
-    const message = textareaField.value.trim(); //trim whitespace
-    const announcementBox = document.getElementById("pochacco-pinned-announcement");
-  
-    if (message.length > 0) {
-      // If there's a message, update the announcement box and show it
-      announcementBox.textContent = message;
-      announcementBox.style.display = "block";
-      textareaField.style.transform = "scaleY(0)";
-  
-    } else {
-  
-      announcementBox.style.display = "none";
-    }
-  
-    // Clear the textarea
-    textareaField.value = '';
-  }
-  
-
-  
-  document.addEventListener('DOMContentLoaded', function() {
-  //Move faces function
-  window.addEventListener('scroll', function() {
-    const banner = document.getElementById('banner');
-    const bannerBottom = banner.offsetTop + banner.offsetHeight; // Get the bottom position of the banner
-    const viewportHeight = window.innerHeight;
-    const scrollY = window.scrollY; // Current scroll position
-    
-    if (scrollY + viewportHeight * 0.35 >= bannerBottom) {
-      document.getElementById('pompom').style.transform = 'translateY(120px)';
-       document.getElementById('pochacco').style.transform = 'translateY(120px)';
-    } else {
-  
-      document.getElementById('pompom').style.transform = '';
-       document.getElementById('pochacco').style.transform = '';
-    }
-  });
-});
 
 
 //scroll trigger animation
@@ -60,24 +19,20 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 });
 
-
-//fixed header
+//colour change animation
 gsap.registerPlugin(ScrollTrigger);
 
-document.querySelectorAll(".Year-wrapper").forEach((section) => {
-  let header = section.querySelector(".month");
-  let content = section.querySelector(".month-wrapper");
-
-  ScrollTrigger.create({
-    trigger: section,
-    start: "top top", 
-    endTrigger: content, 
-    end: "bottom top", 
-    pin: header, 
-    pinSpacing: false 
-  });
+gsap.to("#header", {
+    scrollTrigger: {
+        trigger: document.body,  // Or another element that encompasses the scrollable area
+        start: "top top",  // When the top of the viewport starts
+        end: "bottom bottom",  // When the bottom of the viewport ends
+        scrub: 1  // Smooth transition of color change
+        
+    },
+    color: "red",  // Target color change
+    ease: "none"
 });
-
 
  
   //side icon scroll
@@ -113,51 +68,5 @@ document.querySelectorAll(".Year-wrapper").forEach((section) => {
     window.addEventListener('scroll', updateActiveIcon);
   });
   
-  function showDetailsForm() {
-    var fileInput = document.getElementById('file-upload');
-    if (fileInput.files.length > 0) {
-      document.getElementById('details-form').style.display = 'block';
-    }
-  }
+
   
-  document.getElementById('gallery-select').addEventListener('change', function() {
-    const newGalleryInput = document.getElementById('new-gallery-name');
-    if (this.value === 'new') {
-      newGalleryInput.style.display = 'block';
-    } else {
-      newGalleryInput.style.display = 'none';
-    }
-  });
-  
-  function submitPhoto() {
-    const fileInput = document.getElementById('file-upload');
-    const gallerySelect = document.getElementById('gallery-select');
-    const newGalleryName = document.getElementById('new-gallery-name').value;
-  
-    if (!fileInput.files.length) {
-      alert('Please select a file to upload.');
-      return;
-    }
-  
-    // WIP upload new photos - Prepare form data
-    const formData = new FormData();
-    formData.append('photo', fileInput.files[0]);
-    formData.append('gallery', gallerySelect.value);
-    if (gallerySelect.value === 'new') {
-      formData.append('newGalleryName', newGalleryName);
-    }
-  
-    // Example: POST request with Fetch API
-    fetch('/upload-photo', {
-      method: 'POST',
-      body: formData,
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-  
-    })
-    .catch(error => {
-      console.error('Error uploading photo:', error);
-    });
-  }

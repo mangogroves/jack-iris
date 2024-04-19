@@ -4,9 +4,15 @@ html {
   
   body {
     background-color: #f8f8f8;
-  }
+    }
+
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 
   .header {
+    width: 100%;
     color: #00B893;
     top:0;
     font-family: "Jacquarda Bastarda 9", serif;
@@ -15,16 +21,18 @@ html {
     align-items: center;
     font-size: 150px;
     position: fixed;
-    width: 100vw;
     height: 100vh; 
     line-height: 1;
     
   }
 
-  .header p {
-  }
+  #colourChange {
+    transition: color 0.3s ease-out;
+    font-size: 24px;
+}
 
   .header-wrapper {
+    
     text-align:center;
     align-items: center;
     position: relative;
@@ -36,9 +44,9 @@ html {
     top: 50%; /* Center it vertically */
     transform: translate(-50%, -50%);
     text-align: center;
-    color: #badfff;
+    color: #003D30;
     font-family:  "Shadows Into Light Two", cursive;
-    font-size: 220px;
+    font-size: 100px;
     display: absolute;
    
     }
@@ -47,178 +55,13 @@ html {
      
     }
   
-  .message-container {
-     display: flex;
-    padding: 20px;
-    flex-direction: row;
-    gap: 10px;
-    max-width: 400px;
-    margin: 200px auto;
-    border-radius: 8px;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    max-height: 500px;
-  }
+
   
-  .input-field, #textarea-field {
-    background-color: #ffff; 
-    color: #001410;
-    border: 1px #00B893 solid;
-    width: 300px;
-    height: 55px;
-    padding: 15px;
-    border-radius: 4px;
-    box-sizing: border-box;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    resize: none;
-    font-family: "Nunito", sans-serif;
-    font-size: 15px;
-    font-weight: 300;
-    opacity: 1;
-    transition: opacity 2s ease-in-out, transform 0.5s ease;
-    
-  }
-  
-  .input-field:focus, #textarea-field:focus {
-    outline: none;
-    border-color: none;
-  }
-  
-  .send-button {
-    color: #e3fbd9; 
-    background-color: #001410;
-    width: 55px;
-    height: 55px;
-    padding: 10px;
-    border: 1px #00B893 solid;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .send-button:hover {
-    color: #001410;
-    background-color:#e3fbd9;
-  }
-  
-  #pochacco-pinned-announcement {
-    display: none;
-    z-index: 101;
-    position: absolute;
-    top: 30px;
-    right: -10px;
-    width: auto;
-    height: auto;
-    transition: height 0.3s ease-out;
-    padding: 5px;
-    border: 1px #00B893 solid;
-    border-radius: 10px;
-    background-color: #e3fbd9; 
-    color: #001410;
-    font-family: "Nunito", sans-serif;
-    font-size: 15px;
-    transition: flex-basis 0.7s cubic-bezier(0.8, 0.0, 0.2, 1);
-  }
-  
-  #pochacco-pinned-announcement:after {
-    content: '';
-    width: 0; 
-    height: 0; 
-    position: absolute;
-    bottom: -10px;
-    left: 10px;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid #00B893;
-  }
-  
-  #pompom-pinned-announcement {
-    display: none;
-    z-index: 101;
-    position: absolute;
-    bottom: 10px;
-    left: -10px;
-    width: auto;
-    height: auto;
-    transition: height 0.3s ease-out;
-    padding: 5px;
-    border: 1px #00B893 solid;
-    border-radius: 10px;
-    background-color: #e3fbd9; 
-    color: #001410;
-    font-family: "Nunito", sans-serif;
-    font-size: 15px;
-    transition: flex-basis 0.7s cubic-bezier(0.8, 0.0, 0.2, 1);
-  }
-  
-  #pompom-pinned-announcement:after {
-    content: '';
-    width: 0; 
-    height: 0; 
-    position: absolute;
-    top: -10px;
-    right: 10px;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid #00B893;
-  }
-  
-  #banner {
-    overflow: hidden;
-    display: flex;
-    justify-content: space-around;
-    background-color: #ffffff;
-    width: calc(100vw - (100vw - 100%));
-    height: 100vh;
-  }
-  
-  .character {
-    flex-grow: 1;
-    display: flex; 
-    flex-basis: 50%;
-    position: relative; 
-    transition: flex-basis 0.4s cubic-bezier(0.8, 0.0, 0.2, 1); 
-  }
-  
-  .pochacco img {
-    scale: 0.75;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    object-position: right;
-    transition: transform 0.4s cubic-bezier(0.8, 0.0, 0.2, 1); 
-  }
-  
-  .pochacco {
-    display: flex;
-    position: relative;
-    background-color: #ffffff;
-  }
-  
-  
-  .pompom img{
-    scale: 0.75;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    object-position: left;
-    transform-origin: left;
-    transition: transform 0.6s cubic-bezier(0.8, 0.0, 0.2, 1); 
-  }
-  
-  .pompom {
-    display: flex;
-    z-index: 5;
-    background-color: #ffd666;
-  }
-  
-  .character:hover {
-    flex-basis: 70%;
-  }
+
   
   .Year-wrapper {
+    width: 100%;
     margin-top: 100vh;
-    width: calc(100vw - (100vw - 100%));
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -226,6 +69,8 @@ html {
   
   
   .card-collection {
+    z-index: 2;
+    width: 100%;
     overflow: hidden;
     gap: 30px;
     align-items: center;
@@ -254,8 +99,12 @@ html {
     flex-direction: row-reverse;
   }
 
+.month-wrapper {
+    width: 100%;
+  }
+
   .img-wrapper img {
-    padding: 10px;
+   
     object-fit: cover;
     width: 100%;
     height: 400px;
@@ -266,6 +115,7 @@ html {
 }
   
   .date {
+    display: hidden;
   z-index: 10;
     transition: max-height 0.6s cubic-bezier(0.8, 0.0, 0.2, 1), opacity 0.3s cubic-bezier(0.8, 0.0, 0.2, 1);
     right: 10px;
@@ -329,61 +179,27 @@ html {
     z-index: 100;
   }
   
-  .add-pic {
-    height: 60px;
-    width: 60px;
-    left: 10px;
-    bottom: 10px;
-    position: fixed;
-    background-color: #003D30;
-    display: flex;
-    padding: 20px;
-    border-radius: 10px;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .custom-file-upload {
-   cursor: pointer;
-   justify-content: center;
-  }
-  
-  input[type="file"] {
-    display: none;
-    align-items: center;
-  }
-  
-  input[type="submit"] {
-    bottom: 0px;
-    color: #e3fbd9; 
-    background-color: #001410;
-    width: 55px;
-    height: 55px;
-    padding: 10px;
-    border: 1px #00B893 solid;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
+
   .material-symbols-outlined:hover {
     color: #00B893;
   }
   
   .material-symbols-outlined {
+    display: hidden;
     scale: 200%;
     color: #00B893;
     transition: color 0.2s ease, opacity 0.2s cubic-bezier(0.8, 0.0, 0.2, 1); 
   }
   
   .icon-scroll .material-symbols-outlined {
+    display: hidden;
     opacity: 0.15;
     color: #003D30;
   }
   
   .icon-scroll {
     z-index: 99;
-    display: flex;  
+    display: hidden;  
     align-items: center;
     flex-direction: column;
     position: fixed;
@@ -398,17 +214,16 @@ html {
   
   @media (max-width: 650px) {
 
-    body {
-      width: 100vw;
+ 
+
+    .header {
+     width: 100%;
+      overflow: hidden;
     }
     
-  #banner {
-    width: 90vw;
-    height: 350px;
-  }
 
 .card-collection {
-  width: 90vw;
+  width: 100%;
   gap: 100px;
   }
 
@@ -435,19 +250,6 @@ html {
       flex-direction: column;
     }
     
-  }
-  
-  #details-form {
-    display: flex;
-    top: 50%;
-    left: 50%;
-     transform: translate(-50%, -50%);
-    max-width: 300px;
-    position: fixed;
-    z-index: 100;
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 10px;
   }
   
   
