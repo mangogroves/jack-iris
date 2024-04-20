@@ -55,39 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
- 
-  //side icon scroll
-  document.addEventListener('DOMContentLoaded', function() {
-    const icons = document.querySelectorAll('.icon-scroll .material-symbols-outlined');
-    
-    function updateActiveIcon() {
-      const scrollPosition = window.scrollY;
-      const totalHeight = document.body.scrollHeight - window.innerHeight;
-      const scrollPercentage = (scrollPosition / totalHeight) * 100;
-    
-      let activeIndex;
-      if (scrollPercentage < 33) {
-        activeIndex = 0; // First icon
-      } else if (scrollPercentage < 66) {
-        activeIndex = 1; // Second icon
-      } else {
-        activeIndex = 2; // Third icon
-      }
-    
-      icons.forEach((icon, index) => {
-        if (index === activeIndex) {
-          icon.classList.add('active');
-        } else {
-          icon.classList.remove('active');
-        }
-      });
-    }
-    
-    updateActiveIcon();
-    
-    // Update active icon on scroll
-    window.addEventListener('scroll', updateActiveIcon);
-  });
-  
+
+
 
   
